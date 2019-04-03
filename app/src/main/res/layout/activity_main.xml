@@ -32,4 +32,18 @@
         android:contentDescription="Esto es una imagen"
         android:src="@mipmap/ic_star"/>
 
+    <Button
+        android:id="@+id/BtnSimpleConImagen"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:drawableLeft="@mipmap/ic_star"
+        android:drawablePadding="5dp"
+        android:text="¡Haz Clic Aquí!"/>
+
+    <TextView
+        android:id="@+id/LblMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"/>
+
 </LinearLayout>
