@@ -46,4 +46,32 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"/>
 
+    <CheckBox
+        android:id="@+id/ChkQueso"
+        android:text="Queso: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/ChkJamon"
+        android:text="Jamón: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"/>
+
+    <CheckBox
+        android:id="@+id/ChkPina"
+        android:text="Piña: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"/>
+
+    <Button
+        android:id="@+id/BtnProcesarIngredientes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Procesar Ingredientes"/>
+
+
 </LinearLayout>

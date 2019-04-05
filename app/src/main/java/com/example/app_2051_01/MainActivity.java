@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton BtnImage;
     public Button BtnSimpleConImagen;
     public TextView LblMensaje;
+    public  CheckBox ChkQueso;
+    public CheckBox ChkJamon;
+    public CheckBox ChkPina;
+    public Button BtnProcesarIngredientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         BtnImage = (ImageButton) findViewById(R.id.BtnImage);
         BtnSimpleConImagen = (Button) findViewById(R.id.BtnSimpleConImagen);
         LblMensaje = (TextView)findViewById(R.id.LblMensaje);
+        ChkQueso = (CheckBox) findViewById(R.id.ChkQueso);
+        ChkJamon = (CheckBox)findViewById(R.id.ChkJamon);
+        ChkPina = (CheckBox)findViewById(R.id.ChkPina);
+        BtnProcesarIngredientes = (Button)findViewById(R.id.BtnProcesarIngredientes);
 
         View.OnClickListener EscuchadorClick = new View.OnClickListener() {
             @Override
@@ -49,13 +57,24 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-
-
         BtnSimple.setOnClickListener(EscuchadorClick);
         BtnToggle.setOnClickListener(EscuchadorClick);
         BtnSwitch.setOnClickListener(EscuchadorClick);
         BtnImage.setOnClickListener(EscuchadorClick);
         BtnSimpleConImagen.setOnClickListener(EscuchadorClick);
+
+        View.OnClickListener ProcesarIngredientesListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Mensaje = "Mi pizza tiene: ";
+                Mensaje += (ChkQueso.isChecked() ? ", " + ChkQueso.getText() : "");
+                Mensaje += (ChkJamon.isChecked() ? ", " + ChkJamon.getText() : "");
+                Mensaje += (ChkPina.isChecked() ? ", " + ChkPina.getText() : "");
+                LblMensaje.setText(Mensaje);
+            }
+        };
+
+        BtnProcesarIngredientes.setOnClickListener(ProcesarIngredientesListener);
 
     }
 
