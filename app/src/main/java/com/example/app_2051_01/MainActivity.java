@@ -9,12 +9,18 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
     public Button BtnSimple;
+    public ToggleButton BtnToggle;
+    public Switch BtnSwitch;
     public ImageButton BtnImage;
     public Button BtnSimpleConImagen;
     public TextView LblMensaje;
@@ -25,21 +31,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BtnSimple = (Button) findViewById(R.id.BtnSimple);
+        BtnToggle = (ToggleButton) findViewById(R.id.BtnToggle);
+        BtnSwitch = (Switch) findViewById(R.id.BtnSwitch);
         BtnImage = (ImageButton) findViewById(R.id.BtnImage);
         BtnSimpleConImagen = (Button) findViewById(R.id.BtnSimpleConImagen);
         LblMensaje = (TextView)findViewById(R.id.LblMensaje);
 
-        View.OnClickListener Escuchador = new View.OnClickListener() {
+        View.OnClickListener EscuchadorClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Acción a realizar
-                LblMensaje.setText("HOLA, acaban de dar clic en el botón!" + v.getId());
+
+                if(v.getId() == R.id.BtnToggle || v.getId() == R.id.BtnSwitch)
+                {
+                    CompoundButton BotonBooleano = (CompoundButton)v;
+                    LblMensaje.setText((BotonBooleano.isChecked()) ? "ENCENDIDO" : "APAGADO");
+                }
+                else LblMensaje.setText("HOLA, acaban de dar clic en el botón!" + v.getId());
             }
         };
 
-        BtnSimple.setOnClickListener(Escuchador);
-        BtnImage.setOnClickListener(Escuchador);
-        BtnSimpleConImagen.setOnClickListener(Escuchador);
+        BtnSimple.setOnClickListener(EscuchadorClick);
+        BtnToggle.setOnClickListener(EscuchadorClick);
+        BtnSwitch.setOnClickListener(EscuchadorClick);
+        BtnImage.setOnClickListener(EscuchadorClick);
+        BtnSimpleConImagen.setOnClickListener(EscuchadorClick);
 
     }
 
