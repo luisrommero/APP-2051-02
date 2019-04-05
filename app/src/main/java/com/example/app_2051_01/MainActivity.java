@@ -41,14 +41,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(v.getId() == R.id.BtnToggle || v.getId() == R.id.BtnSwitch)
+                if(v instanceof CompoundButton)
                 {
-                    CompoundButton BotonBooleano = (CompoundButton)v;
-                    LblMensaje.setText((BotonBooleano.isChecked()) ? "ENCENDIDO" : "APAGADO");
+                    LblMensaje.setText((((CompoundButton)v).isChecked()) ? "ENCENDIDO" : "APAGADO");
                 }
                 else LblMensaje.setText("HOLA, acaban de dar clic en el botón!" + v.getId());
             }
         };
+
+
 
         BtnSimple.setOnClickListener(EscuchadorClick);
         BtnToggle.setOnClickListener(EscuchadorClick);
