@@ -1,6 +1,7 @@
 package com.example.app_2051_01;
 
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public  CheckBox ChkQueso;
     public CheckBox ChkJamon;
     public CheckBox ChkPina;
+    public RadioGroup RdoGroup;
     public Button BtnProcesarIngredientes;
 
     @Override
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ChkQueso = (CheckBox) findViewById(R.id.ChkQueso);
         ChkJamon = (CheckBox)findViewById(R.id.ChkJamon);
         ChkPina = (CheckBox)findViewById(R.id.ChkPina);
+        RdoGroup = (RadioGroup) findViewById(R.id.RdoGroup);
         BtnProcesarIngredientes = (Button)findViewById(R.id.BtnProcesarIngredientes);
 
         View.OnClickListener EscuchadorClick = new View.OnClickListener() {
@@ -70,7 +74,26 @@ public class MainActivity extends AppCompatActivity {
                 Mensaje += (ChkQueso.isChecked() ? ", " + ChkQueso.getText() : "");
                 Mensaje += (ChkJamon.isChecked() ? ", " + ChkJamon.getText() : "");
                 Mensaje += (ChkPina.isChecked() ? ", " + ChkPina.getText() : "");
-                LblMensaje.setText(Mensaje);
+
+                int IdRadioButton = RdoGroup.getCheckedRadioButtonId();
+
+                if(IdRadioButton == -1) LblMensaje.setText("Debe seleccionar un tipo de masa.");
+                else
+                {
+                    switch (IdRadioButton)
+                    {
+                        case R.id.RbOpcionNormal:
+                            Mensaje += ". con MASA NORMAL.";
+                            break;
+                        case R.id.RbOpcionSarten:
+                            Mensaje += ". con MASA DE SARTÉN.";
+                            break;
+                        case R.id.RbOpcionOrillaDeQueso:
+                            Mensaje += ". con ORILLA RELLENA DE QUESO.";
+                            break;
+                    }
+                    LblMensaje.setText(Mensaje);
+                }
             }
         };
 

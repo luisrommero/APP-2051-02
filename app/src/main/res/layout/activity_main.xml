@@ -27,8 +27,8 @@
 
     <ImageButton
         android:id="@+id/BtnImage"
-        android:layout_width="500px"
-        android:layout_height="500px"
+        android:layout_width="150px"
+        android:layout_height="150px"
         android:contentDescription="Esto es una imagen"
         android:src="@mipmap/ic_star"/>
 
@@ -67,11 +67,36 @@
         android:layout_height="wrap_content"
         android:checked="false"/>
 
+    <RadioGroup android:id="@+id/RdoGroup"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/RbOpcionNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masa Normal"/>
+
+    <RadioButton
+        android:id="@+id/RbOpcionSarten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masa de Sartén"/>
+
+    <RadioButton
+        android:id="@+id/RbOpcionOrillaDeQueso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Orilla Rellena de Queso"/>
+
+    </RadioGroup>
+
     <Button
         android:id="@+id/BtnProcesarIngredientes"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Procesar Ingredientes"/>
+        android:text="Procesar Pedido"/>
 
 
 </LinearLayout>
