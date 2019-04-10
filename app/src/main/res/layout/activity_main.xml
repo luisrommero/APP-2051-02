@@ -90,6 +90,12 @@
         android:layout_height="wrap_content"
         android:text="Orilla Rellena de Queso"/>
 
+        <RadioButton
+            android:id="@+id/RbOpcionCrujiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masa Crujiente"/>
+
     </RadioGroup>
 
     <Button

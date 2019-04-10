@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.RadioAccessSpecifier;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,10 +14,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public CheckBox ChkJamon;
     public CheckBox ChkPina;
     public RadioGroup RdoGroup;
+    public RadioButton RbOpcionNormal;
+    public RadioButton RbOpcionSarten;
+    public RadioButton RbOpcionOrillaDeQueso;
     public Button BtnProcesarIngredientes;
 
     @Override
@@ -47,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         ChkJamon = (CheckBox)findViewById(R.id.ChkJamon);
         ChkPina = (CheckBox)findViewById(R.id.ChkPina);
         RdoGroup = (RadioGroup) findViewById(R.id.RdoGroup);
+        RbOpcionNormal = (RadioButton) findViewById(R.id.RbOpcionNormal);
+        RbOpcionSarten = (RadioButton) findViewById(R.id.RbOpcionSarten);
+        RbOpcionOrillaDeQueso = (RadioButton) findViewById(R.id.RbOpcionOrillaDeQueso);
         BtnProcesarIngredientes = (Button)findViewById(R.id.BtnProcesarIngredientes);
 
         View.OnClickListener EscuchadorClick = new View.OnClickListener() {
@@ -98,6 +108,25 @@ public class MainActivity extends AppCompatActivity {
         };
 
         BtnProcesarIngredientes.setOnClickListener(ProcesarIngredientesListener);
+
+        RadioGroup.OnCheckedChangeListener ListenerRadioGroup = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int IdRadioButton = group.getCheckedRadioButtonId();
+                for (int i = 0; i < RdoGroup.getChildCount(); i++)
+                {
+                    View o = RdoGroup.getChildAt(i);
+                    if (o instanceof RadioButton) {
+                        if(IdRadioButton != o.getId()) o.setEnabled(false);
+                    }
+                }
+            }
+        };
+
+        RdoGroup.setOnCheckedChangeListener(ListenerRadioGroup);
+
+
+
 
     }
 
